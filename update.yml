@@ -3,8 +3,10 @@
   hosts: localhost
   gather_facts: false
   become: false
+
   tasks:
-    - name: Install wget using Homebrew
+
+    - name: dockutil is installed
       become: false
       community.general.homebrew:
         name: dockutil
