@@ -17,4 +17,4 @@
   roles:
     - name: geerlingguy.mac.dock
     - name: geerlingguy.mac.homebrew
-    - name: geerlingguy.mas
+    - name: geerlingguy.mac.mas
