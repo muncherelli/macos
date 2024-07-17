@@ -8,6 +8,8 @@
       - Messages
     homebrew_installed_packages:
       - wget
+    homebrew_cask_apps:
+      - github
     mas_installed_apps:
       - { id: 424389933, name: "Final Cut Pro" }
       - { id: 949582631, name: "HDHomeRun" }
