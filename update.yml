@@ -2,20 +2,17 @@
 - name: Update Software
   hosts: localhost
   gather_facts: false
-  become: false
 
-  tasks:
+  vars:
+    dockitems_remove:
+      - Launchpad
+      - Messages
+
+  pre_tasks:
     - name: Ensure dockutil is installed
       community.general.homebrew:
         name: dockutil
         state: present
 
-    - name: Get list of items currently in Dock
-      become: false
-      command: dockutil --list
-      register: dock_items
-
-    - name: Remove Launchpad from Dock if present
-      become: false
-      command: dockutil --remove 'Launchpad'
-      when: "'Launchpad' in dock_items.stdout"
+  roles:
+    - role: geerlingguy.mac.dock
