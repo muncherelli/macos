@@ -5,13 +5,17 @@
   become: false
 
   tasks:
-
-    - name: dockutil is installed
-      become: false
+    - name: Ensure dockutil is installed
       community.general.homebrew:
         name: dockutil
         state: present
-    - name: remove Launchpad from Dock
+
+    - name: Get list of items currently in Dock
+      become: false
+      command: dockutil --list
+      register: dock_items
+
+    - name: Remove Launchpad from Dock if present
       become: false
       command: dockutil --remove 'Launchpad'
-
+      when: "'Launchpad' in dock_items.stdout"
