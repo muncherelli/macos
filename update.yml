@@ -10,6 +10,9 @@
       - wget
     mas_installed_apps:
       - { id: 424389933, name: "Final Cut Pro" }
+      - { id: 949582631, name: "HDHomeRun" }
+      - { id: 497799835, name: "Xcode" }
+    mas_uninstalled_apps: []
 
   pre_tasks:
     - name: Ensure dockutil is installed
