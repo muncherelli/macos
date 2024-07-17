@@ -11,3 +11,7 @@
       community.general.homebrew:
         name: dockutil
         state: present
+    - name: remove Launchpad from Dock
+      become: false
+      command: dockutil --remove 'Launchpad'
+
