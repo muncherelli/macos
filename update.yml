@@ -1,22 +1,11 @@
 ---
-- name: Configure macOS Dock
+- name: Update Software
   hosts: localhost
-  become: true
-
-  vars:
-    dockitems_remove:
-      - Launchpad
-      - Messages
-      - Maps
-      - Photos
-  
-  pre_tasks:
-    - name: Ensure dockutil is installed
+  gather_facts: false
+  become: false
+  tasks:
+    - name: Install wget using Homebrew
       become: false
-      homebrew:
+      community.general.homebrew:
         name: dockutil
         state: present
-
-  roles:
-    - geerlingguy.mac.homebrew
-    - geerlingguy.mac.dock
