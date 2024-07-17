@@ -1,0 +1,16 @@
+---
+- name: Configure macOS Dock
+  hosts: localhost
+  become: true
+
+  vars:
+    dockutil_install: true
+    dockitems_remove:
+      - Launchpad
+      - Messages
+      - Maps
+      - Photos
+
+  roles:
+    - geerlingguy.mac.homebrew
+    - geerlingguy.mac.dock
