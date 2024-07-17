@@ -1,4 +1,3 @@
 ---
-roles:
-  - name: geerlingguy.mac.dock
-
+collections:
+  - name: geerlingguy.mac
