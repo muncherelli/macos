@@ -3,23 +3,6 @@
 # get sudo password
 sudo -v
 
-# function to check xcode command line tools
-install_xcode_tools() {
-    if ! xcode-select -p &>/dev/null; then
-        echo "Installing Xcode Command Line Tools..."
-        xcode-select --install
-
-        # wait for the installation to complete
-        echo "Waiting for Xcode Command Line Tools installation to complete..."
-        while ! xcode-select -p &>/dev/null; do
-            sleep 10
-        done
-        echo "Xcode Command Line Tools installation completed."
-    else
-        echo "Xcode Command Line Tools are already installed."
-    fi
-}
-
 # function to install homebrew
 install_homebrew() {
     if ! command -v brew &>/dev/null; then
@@ -28,6 +11,9 @@ install_homebrew() {
             echo "Homebrew installation failed."
             exit 1
         }
+		# add homebrew to path
+		echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+		eval "$(/opt/homebrew/bin/brew shellenv)"
     else
         echo "Homebrew is already installed."
     fi
@@ -45,9 +31,6 @@ install_ansible() {
         echo "Ansible is already installed."
     fi
 }
-
-# install xcode command line tools
-install_xcode_tools
 
 # install homebrew
 install_homebrew
