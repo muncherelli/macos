@@ -1,7 +1,6 @@
 ---
 - name: Update Software
   hosts: localhost
-  gather_facts: false
 
   vars:
     dockitems_remove:
