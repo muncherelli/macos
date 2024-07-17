@@ -7,8 +7,5 @@ then
     exit 1
 fi
 
-# install ansible requirements
-ansible-galaxy install -r requirements.yml
-
 # run ansible update playbook
 ansible-playbook update.yml --ask-become-pass
