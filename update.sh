@@ -11,4 +11,6 @@ fi
 ansible-galaxy install -r requirements.yml
 
 # run ansible update playbook
-ansible-playbook update.yml --ask-become-pass
+# ansible-playbook update.yml --ask-become-pass
+ansible-playbook update.yml
+
