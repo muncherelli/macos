@@ -6,6 +6,10 @@
     dockitems_remove:
       - Launchpad
       - Messages
+    homebrew_installed_packages:
+      - wget
+    mas_installed_apps:
+      - { id: 424389933, name: "Final Cut Pro" }
 
   pre_tasks:
     - name: Ensure dockutil is installed
