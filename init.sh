@@ -14,6 +14,8 @@ install_homebrew() {
 		# add homebrew to path
 		echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 		eval "$(/opt/homebrew/bin/brew shellenv)"
+		# apply changes to current shell
+		source ~/.zprofile
     else
         echo "Homebrew is already installed."
     fi
