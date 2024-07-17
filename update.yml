@@ -9,6 +9,7 @@
 
   pre_tasks:
     - name: Ensure dockutil is installed
+      become: false
       community.general.homebrew:
         name: dockutil
         state: present
