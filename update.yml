@@ -4,11 +4,17 @@
   gather_facts: false
 
   vars:
-    dockutil_install: true
     dockitems_remove:
       - Launchpad
       - Messages
 
+  pre_tasks:
+    - name: Ensure dockutil is installed
+      community.general.homebrew:
+        name: dockutil
+        state: present
+
   roles:
     - name: geerlingguy.mac.dock
     - name: geerlingguy.mac.homebrew
+    - name: geerlingguy.mas
