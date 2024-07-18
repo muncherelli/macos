@@ -30,8 +30,6 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# 
-
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -107,7 +105,6 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
-
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
@@ -121,7 +118,6 @@ defaults write com.apple.dock expose-animation-duration -float 0.15
 # Disable Recently Used Applications in Dock
 defaults write com.apple.dock show-recents -bool false
 
-
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
@@ -133,6 +129,15 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# Disable Automatically Open Safe Downloads
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
+# Disable AutoFill for all forms
+defaults write com.apple.Safari AutoFillFromAddressBook -bool false
+defaults write com.apple.Safari AutoFillPasswords -bool false
+defaults write com.apple.Safari AutoFillCreditCardData -bool false
+defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
 ###############################################################################
 # Mail                                                                        #

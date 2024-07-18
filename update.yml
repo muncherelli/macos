@@ -72,6 +72,9 @@
       register: oh_my_zsh_installed
 
   tasks:
+    - name: Hush login
+      ansible.builtin.shell: touch ~/.hushlogin
+
     - name: Oh My Zsh
       ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       args:
@@ -98,6 +101,46 @@
       ansible.builtin.get_url:
         url: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
         dest: ~/Library/Fonts/MesloLGS NF Bold Italic.ttf
+
+    - name: Powerlevel10k theme
+      ansible.builtin.git:
+        repo: 'https://github.com/romkatv/powerlevel10k.git'
+        dest: '{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k'
+        depth: 1
+
+    - name: Set ZSH_THEME
+      ansible.builtin.lineinfile:
+        path: '{{ ansible_env.HOME }}/.zshrc'
+        regexp: '^ZSH_THEME='
+        line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
+        create: yes
+
+    - name: SoundSource
+      ansible.builtin.shell: |
+        curl -o ~/Downloads/SoundSource.zip https://cdn.rogueamoeba.com/soundsource/download/SoundSource.zip && \
+        unzip -o ~/Downloads/SoundSource.zip -d /Applications/
+      args:
+        creates: /Applications/SoundSource.app
+      environment:
+        PATH: "{{ ansible_env.PATH }}"
+
+    - name: Audio Hijack
+      ansible.builtin.shell: |
+        curl -o ~/Downloads/AudioHijack.zip https://cdn.rogueamoeba.com/audiohijack/download/AudioHijack.zip && \
+        unzip -o ~/Downloads/AudioHijack.zip -d /Applications/
+      args:
+        creates: /Applications/Audio Hijack.app
+      environment:
+        PATH: "{{ ansible_env.PATH }}"
+
+    - name: Loopback
+      ansible.builtin.shell: |
+        curl -o ~/Downloads/Loopback.zip https://cdn.rogueamoeba.com/loopback/download/Loopback.zip && \
+        unzip -o ~/Downloads/Loopback.zip -d /Applications/
+      args:
+        creates: /Applications/Loopback.app
+      environment:
+        PATH: "{{ ansible_env.PATH }}"
 
     - name: Run OS Script
       ansible.builtin.shell: ./os.sh
