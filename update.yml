@@ -99,6 +99,11 @@
         url: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
         dest: ~/Library/Fonts/MesloLGS NF Bold Italic.ttf
 
+    - name: Run OS Script
+      ansible.builtin.shell: ./os.sh
+      args:
+        chdir: "{{ playbook_dir }}"
+
   roles:
     - name: geerlingguy.mac.homebrew
     - name: geerlingguy.mac.mas
