@@ -65,7 +65,7 @@
       community.general.homebrew:
         name: dockutil
         state: present
-    
+
     - name: Check for Oh My Zsh installation
       ansible.builtin.stat:
         path: ~/.oh-my-zsh
@@ -91,12 +91,12 @@
       ansible.builtin.get_url:
         url: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
         dest: ~/Library/Fonts/MesloLGS NF Bold.ttf
-    
+
     - name: MesloLGS NF Italic (font)
       ansible.builtin.get_url:
         url: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
         dest: ~/Library/Fonts/MesloLGS NF Italic.ttf
-    
+
     - name: MesloLGS NF Bold Italic (font)
       ansible.builtin.get_url:
         url: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
@@ -104,14 +104,14 @@
 
     - name: Powerlevel10k theme
       ansible.builtin.git:
-        repo: 'https://github.com/romkatv/powerlevel10k.git'
-        dest: '{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k'
+        repo: "https://github.com/romkatv/powerlevel10k.git"
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
         depth: 1
 
     - name: Set ZSH_THEME
       ansible.builtin.lineinfile:
-        path: '{{ ansible_env.HOME }}/.zshrc'
-        regexp: '^ZSH_THEME='
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        regexp: "^ZSH_THEME="
         line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
         create: yes
 
@@ -119,6 +119,7 @@
       ansible.builtin.shell: |
         curl -o ~/Downloads/SoundSource.zip https://cdn.rogueamoeba.com/soundsource/download/SoundSource.zip && \
         unzip -o ~/Downloads/SoundSource.zip -d /Applications/
+        rm ~/Downloads/SoundSource.zip
       args:
         creates: /Applications/SoundSource.app
       environment:
@@ -128,6 +129,7 @@
       ansible.builtin.shell: |
         curl -o ~/Downloads/AudioHijack.zip https://cdn.rogueamoeba.com/audiohijack/download/AudioHijack.zip && \
         unzip -o ~/Downloads/AudioHijack.zip -d /Applications/
+        rm ~/Downloads/AudioHijack.zip
       args:
         creates: /Applications/Audio Hijack.app
       environment:
@@ -137,6 +139,7 @@
       ansible.builtin.shell: |
         curl -o ~/Downloads/Loopback.zip https://cdn.rogueamoeba.com/loopback/download/Loopback.zip && \
         unzip -o ~/Downloads/Loopback.zip -d /Applications/
+        rm ~/Downloads/Loopback.zip
       args:
         creates: /Applications/Loopback.app
       environment:
