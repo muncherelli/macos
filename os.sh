@@ -9,10 +9,15 @@
 #
 
 ###############################################################################
-# App Specific                                                                #
+# ASK TO SEE IF USER HAS GIVEN FULL DISK ACCESS TO TERMINAL                   #
 ###############################################################################
 
-
+echo "Did you give full disk access to Terminal.app? (y/n)"
+read -r confirm
+if [ "$confirm" != "y" ]; then
+  echo "Please give full disk access to Terminal.app in System Preferences > Search for Full Disk Access, add Terminal and run the script again."
+  exit
+fi
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -109,17 +114,27 @@ chflags nohidden ~/Library
 defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
 
 ###############################################################################
-# Dock, Dashboard, and hot corners                                            #
+# Mouse, Keyboard, Trackpad, and Input                                        #
+###############################################################################
+
+defaults write com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag" -bool "true"
+
+###############################################################################
+# Dock, Menu, Dashboard, and hot corners                                      #
 ###############################################################################
 
 # Set the icon size of Dock items
-defaults write com.apple.dock tilesize -int 30
+defaults write com.apple.dock tilesize -int 48
 
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.15
 
 # Disable Recently Used Applications in Dock
-defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock "show-recents" -bool "false"
+
+# Set Clock format
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"HH:mm\""
+
 
 ###############################################################################
 # Safari & WebKit                                                             #
