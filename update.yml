@@ -39,7 +39,9 @@
       - wget
     homebrew_cask_apps:
       - adobe-creative-cloud
+      - azure-data-studio
       - brave-browser
+      - bruno
       - github
       - font-victor-mono
       - plex
