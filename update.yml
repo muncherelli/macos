@@ -150,6 +150,44 @@
       args:
         chdir: "{{ playbook_dir }}"
 
+    - name: Clone zsh-autosuggestions repository
+      git:
+        repo: "https://github.com/zsh-users/zsh-autosuggestions"
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+        update: yes
+
+    - name: Ensure zsh-autosuggestions is added to plugins list in .zshrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        regexp: '^plugins=\('
+        line: "plugins=(git zsh-autosuggestions)"
+        state: present
+        backrefs: yes
+
+    - name: Clone zsh-syntax-highlighting repository
+      git:
+        repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+        update: yes
+
+    - name: Ensure zsh-syntax-highlighting is added to plugins list in .zshrc
+      lineinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        regexp: '^plugins=\('
+        line: "plugins=(git zsh-autosuggestions zsh-syntax-highlighting)"
+        state: present
+        backrefs: yes
+
+    - name: Ensure nvm configuration is added to .zshrc
+      blockinfile:
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        block: |
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+          [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR NVM"
+      become: yes
+
   roles:
     - name: geerlingguy.mac.homebrew
     - name: geerlingguy.mac.mas
