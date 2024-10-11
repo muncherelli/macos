@@ -117,6 +117,8 @@ defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool fa
 # Mouse, Keyboard, Trackpad, and Input                                        #
 ###############################################################################
 
+# Enable Three Finger Drag
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerSwipeGesture -int 1
 defaults write com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag" -bool "true"
 
 ###############################################################################
@@ -134,7 +136,6 @@ defaults write com.apple.dock "show-recents" -bool "false"
 
 # Set Clock format
 defaults write com.apple.menuextra.clock "DateFormat" -string "\"HH:mm\""
-
 
 ###############################################################################
 # Safari & WebKit                                                             #
