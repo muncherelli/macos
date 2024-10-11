@@ -35,7 +35,6 @@
 
     homebrew_installed_packages:
       - nvm
-      - virt-manager
       - wget
     homebrew_cask_apps:
       - adobe-creative-cloud
