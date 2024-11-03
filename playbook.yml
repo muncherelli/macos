@@ -42,7 +42,6 @@
       - brave-browser
       - github
       - font-victor-mono
-      - parallels
       - plex
       - postman
       - raspberry-pi-imager
@@ -59,7 +58,6 @@
       - { id: 424389933, name: "Final Cut Pro" }
       - { id: 949582631, name: "HDHomeRun" }
       - { id: 1518036000, name: "Sequel Ace" }
-      - { id: 1538878817, name: "UTM" }
       - { id: 497799835, name: "Xcode" }
     mas_uninstalled_apps: []
 
