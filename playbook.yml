@@ -34,7 +34,9 @@
         pos: 4
 
     homebrew_installed_packages:
+      - lftp
       - nvm
+      - tree
       - wget
     homebrew_cask_apps:
       - adobe-creative-cloud
