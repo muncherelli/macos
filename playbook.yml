@@ -34,12 +34,10 @@
         pos: 4
 
     homebrew_installed_packages:
-      - lftp
       - nvm
       - tree
       - wget
     homebrew_cask_apps:
-      - adobe-creative-cloud
       - azure-data-studio
       - brave-browser
       - github
@@ -47,20 +45,25 @@
       - plex
       - postman
       - raspberry-pi-imager
-      - sublime-text
       - transmit
       - visual-studio-code
+      - vlc
       - zed
+      # - Caskroom/cask/vagrant
+      # - Caskroom/cask/vagrant-manager
 
     mas_installed_apps:
       - { id: 1091189122, name: "Bear" }
       - { id: 417375580, name: "BetterSnapTool" }
-      - { id: 1560048103, name: "DefleMask" }
+      # - { id: 425264550, name: "Blackmagic Disk Speed Test" }
+      # - { id: 1560048103, name: "DefleMask" }
       - { id: 1543920362, name: "Displaperture" }
-      - { id: 424389933, name: "Final Cut Pro" }
+      # - { id: 424389933, name: "Final Cut Pro" }
       - { id: 949582631, name: "HDHomeRun" }
       - { id: 1518036000, name: "Sequel Ace" }
       - { id: 497799835, name: "Xcode" }
+      - { id: 1538878817, name: "UTM Virtual Machines" }
+      # - { id: 1295203466, name: "Windows App" }
     mas_uninstalled_apps: []
 
   pre_tasks:
@@ -119,15 +122,15 @@
         line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
         create: yes
 
-    - name: SoundSource
-      ansible.builtin.shell: |
-        curl -o ~/Downloads/SoundSource.zip https://cdn.rogueamoeba.com/soundsource/download/SoundSource.zip && \
-        unzip -o ~/Downloads/SoundSource.zip -d /Applications/
-        rm ~/Downloads/SoundSource.zip
-      args:
-        creates: /Applications/SoundSource.app
-      environment:
-        PATH: "{{ ansible_env.PATH }}"
+    # - name: SoundSource
+    #   ansible.builtin.shell: |
+    #     curl -o ~/Downloads/SoundSource.zip https://cdn.rogueamoeba.com/soundsource/download/SoundSource.zip && \
+    #     unzip -o ~/Downloads/SoundSource.zip -d /Applications/
+    #     rm ~/Downloads/SoundSource.zip
+    #   args:
+    #     creates: /Applications/SoundSource.app
+    #   environment:
+    #     PATH: "{{ ansible_env.PATH }}"
 
     - name: Audio Hijack
       ansible.builtin.shell: |
@@ -139,15 +142,15 @@
       environment:
         PATH: "{{ ansible_env.PATH }}"
 
-    - name: Loopback
-      ansible.builtin.shell: |
-        curl -o ~/Downloads/Loopback.zip https://cdn.rogueamoeba.com/loopback/download/Loopback.zip && \
-        unzip -o ~/Downloads/Loopback.zip -d /Applications/
-        rm ~/Downloads/Loopback.zip
-      args:
-        creates: /Applications/Loopback.app
-      environment:
-        PATH: "{{ ansible_env.PATH }}"
+    # - name: Loopback
+    #   ansible.builtin.shell: |
+    #     curl -o ~/Downloads/Loopback.zip https://cdn.rogueamoeba.com/loopback/download/Loopback.zip && \
+    #     unzip -o ~/Downloads/Loopback.zip -d /Applications/
+    #     rm ~/Downloads/Loopback.zip
+    #   args:
+    #     creates: /Applications/Loopback.app
+    #   environment:
+    #     PATH: "{{ ansible_env.PATH }}"
 
     - name: Run OS Script
       ansible.builtin.shell: ./os.sh
