@@ -29,22 +29,26 @@
       - name: "Mail"
         path: "/Applications/Mail.app"
         pos: 3
-      - name: "Sublime Text"
-        path: "/Applications/Sublime Text.app"
+      - name: "Terminal"
+        path: "/Applications/Utilities/Terminal.app"
         pos: 4
+      - name: "Github Desktop"
+        path: "/Applications/Github Desktop.app"
+        pos: 5
 
     homebrew_installed_packages:
       - nvm
       - tree
       - wget
     homebrew_cask_apps:
-      - azure-data-studio
+      # - azure-data-studio
+      - android-studio
       - brave-browser
       - github
       - font-victor-mono
-      - plex
+      # - plex
       - postman
-      - raspberry-pi-imager
+      # - raspberry-pi-imager
       - transmit
       - visual-studio-code
       - vlc
@@ -53,17 +57,19 @@
       # - Caskroom/cask/vagrant-manager
 
     mas_installed_apps:
-      - { id: 1091189122, name: "Bear" }
       - { id: 417375580, name: "BetterSnapTool" }
-      # - { id: 425264550, name: "Blackmagic Disk Speed Test" }
-      # - { id: 1560048103, name: "DefleMask" }
+      - { id: 425264550, name: "Blackmagic Disk Speed Test" }
+      - { id: 1560048103, name: "DefleMask" }
       - { id: 1543920362, name: "Displaperture" }
-      # - { id: 424389933, name: "Final Cut Pro" }
-      - { id: 949582631, name: "HDHomeRun" }
-      - { id: 1518036000, name: "Sequel Ace" }
+      - { id: 424389933, name: "Final Cut Pro" }
+      - { id: 462058435, name: "Microsoft Excel" }
+      - { id: 985367838, name: "Microsoft Outlook" }
+      - { id: 462054704, name: "Microsoft Word" }
+      # - { id: 1518036000, name: "Sequel Ace" }
+      - { id: 985614903, name: "SQLPro Studio" }
       - { id: 497799835, name: "Xcode" }
       - { id: 1538878817, name: "UTM Virtual Machines" }
-      # - { id: 1295203466, name: "Windows App" }
+      - { id: 1295203466, name: "Windows App" }
     mas_uninstalled_apps: []
 
   pre_tasks:
@@ -193,7 +199,7 @@
           [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
           [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
         marker: "# {mark} ANSIBLE MANAGED BLOCK FOR NVM"
-      become: yes
+      become: true
 
   roles:
     - name: geerlingguy.mac.homebrew
