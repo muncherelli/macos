@@ -44,8 +44,10 @@
       # - azure-data-studio
       - android-studio
       - brave-browser
+      - docker
       - github
       - font-victor-mono
+      - microsoft-office
       # - plex
       - postman
       # - raspberry-pi-imager
@@ -62,10 +64,8 @@
       - { id: 1560048103, name: "DefleMask" }
       - { id: 1543920362, name: "Displaperture" }
       - { id: 424389933, name: "Final Cut Pro" }
-      - { id: 462058435, name: "Microsoft Excel" }
-      - { id: 985367838, name: "Microsoft Outlook" }
-      - { id: 462054704, name: "Microsoft Word" }
       # - { id: 1518036000, name: "Sequel Ace" }
+      - { id: 803453959, name: "Slack for Desktop" }
       - { id: 985614903, name: "SQLPro Studio" }
       - { id: 497799835, name: "Xcode" }
       - { id: 1538878817, name: "UTM Virtual Machines" }
