@@ -29,19 +29,16 @@
       - name: 'Mail'
         path: '/Applications/Mail.app'
         pos: 3
-      - name: 'Sublime Text'
-        path: '/Applications/Sublime Text.app'
-        pos: 4
 
     homebrew_installed_packages:
       - nvm
       - tree
       - wget
     homebrew_cask_apps:
-      - azure-data-studio
-      - android-studio
       - balenaetcher
       - brave-browser
+      - chatgpt
+      - cursor
       - github
       - font-victor-mono
       - plex
@@ -49,7 +46,6 @@
       - raspberry-pi-imager
       - sublime-text
       - transmit
-      - visual-studio-code
       - vlc
       - zed
 
