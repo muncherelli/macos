@@ -24,6 +24,8 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 # # # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 # defaults write com.apple.screencapture type -string "png"
 
+# TO-DO: change the lock screen timeout to 180 minutes (max)
+
 # # ###############################################################################
 # # # Finder                                                                      #
 # # ###############################################################################
