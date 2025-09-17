@@ -53,8 +53,8 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # show the ~/Library folder because we aren't nubs
 chflags nohidden ~/Library
 
-# # # Disable single click desktop to hide all windows and show desktop only in Stage Manager.
-# defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
+# disable single click desktop to hide all windows and show desktop only in Stage Manager.
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
 
 # # ###############################################################################
 # # # Mouse, Keyboard, Trackpad, and Input                                        #
