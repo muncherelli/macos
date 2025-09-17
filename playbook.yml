@@ -4,17 +4,21 @@
 
   vars:
     dockitems_remove:
+      - Apps
       - 'App Store'
       - Calendar
       - Contacts
       - FaceTime
       - Freeform
+      - Games
+      - iPhone Mirroring
       - Launchpad
       - Maps
       - Messages
       - Music
       - News
       - Notes
+      - Phone
       - Photos
       - Reminders
       - 'System Settings'
