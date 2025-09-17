@@ -51,6 +51,7 @@
       - sublime-text
       - transmit
       - vlc
+      - winbox
       - zed
 
     mas_installed_apps:
