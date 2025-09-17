@@ -51,7 +51,6 @@
 
     mas_installed_apps:
       - { id: 1091189122, name: 'Bear: Markdown Notes' }
-      - { id: 417375580, name: 'BetterSnapTool' }
       - { id: 425264550, name: 'Blackmagic Disk Speed Test' }
       - { id: 1560048103, name: 'DefleMask' }
       - { id: 1543920362, name: 'Displaperture' }
@@ -59,7 +58,6 @@
       - { id: 949582631, name: 'HDHomeRun' }
       - { id: 1518036000, name: 'Sequel Ace' }
       - { id: 985614903, name: 'SQLPro Studio' }
-      - { id: 497799835, name: 'Xcode' }
       - { id: 1538878817, name: 'UTM Virtual Machines' }
       - { id: 1295203466, name: 'Windows App' }
     mas_uninstalled_apps: []
