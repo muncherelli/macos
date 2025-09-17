@@ -33,6 +33,9 @@
       - name: 'Mail'
         path: '/Applications/Mail.app'
         pos: 3
+      - name: 'Plex'
+        path: '/Applications/Plex.app'
+        pos: 4
 
     homebrew_installed_packages:
       - nvm
