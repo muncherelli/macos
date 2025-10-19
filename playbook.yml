@@ -38,9 +38,11 @@
         pos: 4
 
     homebrew_installed_packages:
+      - ffmpeg
       - nvm
       - tree
       - wget
+      - yt-dlp
     homebrew_cask_apps:
       - balenaetcher
       - brave-browser
