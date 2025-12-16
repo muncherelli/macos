@@ -5,7 +5,7 @@
   vars:
     dockitems_remove:
       - Apps
-      - 'App Store'
+      - "App Store"
       - Calendar
       - Contacts
       - FaceTime
@@ -21,28 +21,22 @@
       - Phone
       - Photos
       - Reminders
-      - 'System Settings'
+      - "System Settings"
       - TV
     dockitems_persist:
-      - name: 'Safari'
-        path: '/Applications/Safari.app'
+      - name: "Safari"
+        path: "/Applications/Safari.app"
         pos: 1
-      - name: 'Brave Browser'
-        path: '/Applications/Brave Browser.app'
+      - name: "Brave Browser"
+        path: "/Applications/Brave Browser.app"
         pos: 2
-      - name: 'Mail'
-        path: '/Applications/Mail.app'
+      - name: "Mail"
+        path: "/Applications/Mail.app"
         pos: 3
-      - name: 'Plex'
-        path: '/Applications/Plex.app'
-        pos: 4
 
     homebrew_installed_packages:
-      - ffmpeg
       - nvm
-      - tree
       - wget
-      - yt-dlp
     homebrew_cask_apps:
       - balenaetcher
       - brave-browser
@@ -57,19 +51,18 @@
       - transmit
       - vlc
       - winbox
-      - zed
 
     mas_installed_apps:
-      - { id: 1091189122, name: 'Bear: Markdown Notes' }
-      - { id: 425264550, name: 'Blackmagic Disk Speed Test' }
-      - { id: 1560048103, name: 'DefleMask' }
-      - { id: 1543920362, name: 'Displaperture' }
-      - { id: 424389933, name: 'Final Cut Pro' }
-      - { id: 949582631, name: 'HDHomeRun' }
-      - { id: 1518036000, name: 'Sequel Ace' }
-      - { id: 985614903, name: 'SQLPro Studio' }
-      - { id: 1538878817, name: 'UTM Virtual Machines' }
-      - { id: 1295203466, name: 'Windows App' }
+      - { id: 1091189122, name: "Bear: Markdown Notes" }
+      - { id: 425264550, name: "Blackmagic Disk Speed Test" }
+      - { id: 1560048103, name: "DefleMask" }
+      - { id: 1543920362, name: "Displaperture" }
+      - { id: 424389933, name: "Final Cut Pro" }
+      - { id: 949582631, name: "HDHomeRun" }
+      - { id: 1518036000, name: "Sequel Ace" }
+      - { id: 985614903, name: "SQLPro Studio" }
+      - { id: 1538878817, name: "UTM Virtual Machines" }
+      - { id: 1295203466, name: "Windows App" }
     mas_uninstalled_apps: []
 
   pre_tasks:
@@ -93,7 +86,7 @@
       args:
         creates: ~/.oh-my-zsh
       environment:
-        PATH: '{{ ansible_env.PATH }}'
+        PATH: "{{ ansible_env.PATH }}"
 
     - name: MesloLGS NF Regular (font)
       ansible.builtin.get_url:
@@ -117,14 +110,14 @@
 
     - name: Powerlevel10k theme
       ansible.builtin.git:
-        repo: 'https://github.com/romkatv/powerlevel10k.git'
-        dest: '{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k'
+        repo: "https://github.com/romkatv/powerlevel10k.git"
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
         depth: 1
 
     - name: Set ZSH_THEME
       ansible.builtin.lineinfile:
-        path: '{{ ansible_env.HOME }}/.zshrc'
-        regexp: '^ZSH_THEME='
+        path: "{{ ansible_env.HOME }}/.zshrc"
+        regexp: "^ZSH_THEME="
         line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
         create: yes
 
@@ -136,69 +129,69 @@
       args:
         creates: /Applications/SoundSource.app
       environment:
-        PATH: '{{ ansible_env.PATH }}'
+        PATH: "{{ ansible_env.PATH }}"
 
-    - name: Audio Hijack
-      ansible.builtin.shell: |
-        curl -o ~/Downloads/AudioHijack.zip https://cdn.rogueamoeba.com/audiohijack/download/AudioHijack.zip && \
-        unzip -o ~/Downloads/AudioHijack.zip -d /Applications/
-        rm ~/Downloads/AudioHijack.zip
-      args:
-        creates: /Applications/Audio Hijack.app
-      environment:
-        PATH: '{{ ansible_env.PATH }}'
+    # - name: Audio Hijack
+    #   ansible.builtin.shell: |
+    #     curl -o ~/Downloads/AudioHijack.zip https://cdn.rogueamoeba.com/audiohijack/download/AudioHijack.zip && \
+    #     unzip -o ~/Downloads/AudioHijack.zip -d /Applications/
+    #     rm ~/Downloads/AudioHijack.zip
+    #   args:
+    #     creates: /Applications/Audio Hijack.app
+    #   environment:
+    #     PATH: "{{ ansible_env.PATH }}"
 
-    - name: Loopback
-      ansible.builtin.shell: |
-        curl -o ~/Downloads/Loopback.zip https://cdn.rogueamoeba.com/loopback/download/Loopback.zip && \
-        unzip -o ~/Downloads/Loopback.zip -d /Applications/
-        rm ~/Downloads/Loopback.zip
-      args:
-        creates: /Applications/Loopback.app
-      environment:
-        PATH: '{{ ansible_env.PATH }}'
+    # - name: Loopback
+    #   ansible.builtin.shell: |
+    #     curl -o ~/Downloads/Loopback.zip https://cdn.rogueamoeba.com/loopback/download/Loopback.zip && \
+    #     unzip -o ~/Downloads/Loopback.zip -d /Applications/
+    #     rm ~/Downloads/Loopback.zip
+    #   args:
+    #     creates: /Applications/Loopback.app
+    #   environment:
+    #     PATH: "{{ ansible_env.PATH }}"
 
     - name: Run OS Script
       ansible.builtin.shell: ./os.sh
       args:
-        chdir: '{{ playbook_dir }}'
+        chdir: "{{ playbook_dir }}"
 
     - name: Clone zsh-autosuggestions repository
       git:
-        repo: 'https://github.com/zsh-users/zsh-autosuggestions'
-        dest: '{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions'
+        repo: "https://github.com/zsh-users/zsh-autosuggestions"
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
         update: yes
 
     - name: Ensure zsh-autosuggestions is added to plugins list in .zshrc
       lineinfile:
-        path: '{{ ansible_env.HOME }}/.zshrc'
+        path: "{{ ansible_env.HOME }}/.zshrc"
         regexp: '^plugins=\('
-        line: 'plugins=(git zsh-autosuggestions)'
+        line: "plugins=(git zsh-autosuggestions)"
         state: present
         backrefs: yes
 
     - name: Clone zsh-syntax-highlighting repository
       git:
-        repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
-        dest: '{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting'
+        repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
         update: yes
 
     - name: Ensure zsh-syntax-highlighting is added to plugins list in .zshrc
       lineinfile:
-        path: '{{ ansible_env.HOME }}/.zshrc'
+        path: "{{ ansible_env.HOME }}/.zshrc"
         regexp: '^plugins=\('
-        line: 'plugins=(git zsh-autosuggestions zsh-syntax-highlighting)'
+        line: "plugins=(git zsh-autosuggestions zsh-syntax-highlighting)"
         state: present
         backrefs: yes
 
     - name: Ensure nvm configuration is added to .zshrc
       blockinfile:
-        path: '{{ ansible_env.HOME }}/.zshrc'
+        path: "{{ ansible_env.HOME }}/.zshrc"
         block: |
           export NVM_DIR="$HOME/.nvm"
           [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
           [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-        marker: '# {mark} ANSIBLE MANAGED BLOCK FOR NVM'
+        marker: "# {mark} ANSIBLE MANAGED BLOCK FOR NVM"
       become: yes
 
   roles:
