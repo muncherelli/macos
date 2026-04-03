@@ -14,6 +14,10 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
+# Menu bar clock: time only (no weekday, no date). ShowDate 2 = Never (macOS 12.4+).
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool false
+defaults write com.apple.menuextra.clock ShowDate -int 2
+
 # # ###############################################################################
 # # # Screen                                                                      #
 # # ###############################################################################
@@ -96,3 +100,6 @@ killall Finder
 
 # reload dock
 killall Dock
+
+# apply menu bar clock prefs (Ventura+)
+killall ControlCenter 2>/dev/null || true
