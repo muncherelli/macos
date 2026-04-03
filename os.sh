@@ -75,6 +75,10 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
+# Disable automatic spelling correction and capitalization (Keyboard text settings).
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
 # # ###############################################################################
 # # # Dock, Menu, Dashboard, and hot corners                                      #
 # # ###############################################################################
