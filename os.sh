@@ -93,14 +93,42 @@ defaults write com.apple.dock "show-recents" -bool "false"
 # # # Safari                                                                      #
 # # ###############################################################################
 
-# # # Disable Automatically Open Safe Downloads
-# defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+# Safari is sandboxed: it reads prefs from the container plist. A bare `defaults write`
+# often updates ~/Library/Preferences only (ignored by Safari) unless Terminal has
+# Full Disk Access. We mirror into the container file when it exists, and do a one-time
+# launch if Safari has never run (so that plist exists).
+safari_container_plist="${HOME}/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist"
 
-# # Disable AutoFill for all forms
-# defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-# defaults write com.apple.Safari AutoFillPasswords -bool false
-# defaults write com.apple.Safari AutoFillCreditCardData -bool false
-# defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
+osascript -e 'quit app "Safari"' 2>/dev/null || true
+sleep 1
+
+if [[ ! -f "$safari_container_plist" ]]; then
+  open -gj -a Safari 2>/dev/null || true
+  sleep 3
+  osascript -e 'quit app "Safari"' 2>/dev/null || true
+  sleep 1
+fi
+
+safari_set_bool() {
+  local key=$1 val=$2
+  defaults write com.apple.Safari "$key" -bool "$val"
+  if [[ -f "$safari_container_plist" ]]; then
+    if ! /usr/libexec/PlistBuddy -c "Set :${key} ${val}" "$safari_container_plist" 2>/dev/null; then
+      /usr/libexec/PlistBuddy -c "Add :${key} bool ${val}" "$safari_container_plist" 2>/dev/null || true
+    fi
+  fi
+}
+
+# General → disable "Open safe files after downloading".
+safari_set_bool AutoOpenSafeDownloads false
+
+# AutoFill → turn off all automatic fill categories.
+safari_set_bool AutoFillFromAddressBook false
+safari_set_bool AutoFillPasswords false
+safari_set_bool AutoFillCreditCardData false
+safari_set_bool AutoFillMiscellaneousForms false
+
+unset -f safari_set_bool
 
 # reload finder
 killall Finder
