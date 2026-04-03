@@ -34,8 +34,9 @@ defaults write com.apple.menuextra.clock ShowDate -int 2
 # # # Finder                                                                      #
 # # ###############################################################################
 
-# set home directory as the default location for new Finder windows
-# TO-DO
+# Finder: new windows open in your home directory (General → "New Finder windows show").
+defaults write com.apple.finder NewWindowTarget -string PfLo
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
 # Finder: show hidden files by default
 # TO-DO
@@ -52,10 +53,9 @@ defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 # # Avoid creating .DS_Store files on network volumes
 # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# use list view in all Finder windows by default
-# four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `Flwv`
-# defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-# this seems to be broken in Sequoia
+# Finder: default view for folders without a saved per-folder style (List = Nlsv).
+# Other codes: icnv icon, clmv column, glyv gallery, Flwv (legacy cover flow).
+defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
 
 # show the ~/Library folder because we aren't nubs
 chflags nohidden ~/Library
