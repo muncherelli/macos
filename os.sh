@@ -46,6 +46,9 @@ defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
 # finder: show status bar
 defaults write com.apple.finder ShowStatusBar -bool true
 
+# finder: do not show external disks on the desktop (Finder Settings → General)
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+
 # # Avoid creating .DS_Store files on network volumes
 # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
