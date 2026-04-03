@@ -89,6 +89,12 @@ defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 # disable Recently Used Applications in Dock
 defaults write com.apple.dock "show-recents" -bool "false"
 
+# Hot corners: disable all (0 = no action; bottom-right defaults to Quick Note otherwise).
+for corner in tl tr bl br; do
+  defaults write com.apple.dock "wvous-${corner}-corner" -int 0
+  defaults write com.apple.dock "wvous-${corner}-modifier" -int 0
+done
+
 # # ###############################################################################
 # # # Safari                                                                      #
 # # ###############################################################################
