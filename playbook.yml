@@ -29,33 +29,36 @@
       - name: "Brave Browser"
         path: "/Applications/Brave Browser.app"
         pos: 2
+      - name: "Google Chrome"
+        path: "/Applications/Google Chrome.app"
+        pos: 3
       - name: "Messages"
         path: "/Applications/Messages.app"
-        pos: 3
+        pos: 4
       - name: "Mail"
         path: "/Applications/Mail.app"
-        pos: 4
+        pos: 5
       - name: "Terminal"
         path: "/Applications/Utilities/Terminal.app"
-        pos: 5
+        pos: 6
       - name: "Cursor"
         path: "/Applications/Cursor.app"
-        pos: 6
+        pos: 7
       - name: "GitHub Desktop"
         path: "/Applications/GitHub Desktop.app"
-        pos: 7
+        pos: 8
       - name: "Transmit"
         path: "/Applications/Transmit.app"
-        pos: 8
+        pos: 9
       - name: "Winbox"
         path: "/Applications/Winbox.app"
-        pos: 9
+        pos: 10
       - name: "Windows App"
         path: "/Applications/Windows App.app"
-        pos: 10
+        pos: 11
       - name: "Screen Sharing"
         path: "/Applications/Utilities/Screen Sharing.app"
-        pos: 11
+        pos: 12
 
     homebrew_installed_packages:
       - mas
