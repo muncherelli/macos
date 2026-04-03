@@ -6,7 +6,7 @@ my automated installer for configuring macOS with settings and applications to s
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/muncherelli/macos
+   git clone https://github.com/muncherelli/macos-bootstrap
    cd macos
    ```
 

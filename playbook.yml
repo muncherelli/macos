@@ -14,7 +14,6 @@
       - iPhone Mirroring
       - Launchpad
       - Maps
-      - Messages
       - Music
       - News
       - Notes
@@ -35,10 +34,10 @@
         pos: 3
 
     homebrew_installed_packages:
+      - mas
       - nvm
       - wget
     homebrew_cask_apps:
-      - balenaetcher
       - brave-browser
       - chatgpt
       - cursor
@@ -46,24 +45,17 @@
       - font-victor-mono
       - plex
       - postman
-      - raspberry-pi-imager
       - sublime-text
       - transmit
       - vlc
       - winbox
 
-    # mas_installed_apps:
-    #   - { id: 1091189122, name: "Bear: Markdown Notes" }
-    #   - { id: 425264550, name: "Blackmagic Disk Speed Test" }
-    #   - { id: 1560048103, name: "DefleMask" }
-    #   - { id: 1543920362, name: "Displaperture" }
-    #   - { id: 424389933, name: "Final Cut Pro" }
-    #   - { id: 949582631, name: "HDHomeRun" }
-    #   - { id: 1518036000, name: "Sequel Ace" }
-    #   - { id: 985614903, name: "SQLPro Studio" }
-    #   - { id: 1538878817, name: "UTM Virtual Machines" }
-    #   - { id: 1295203466, name: "Windows App" }
-    # mas_uninstalled_apps: []
+    mas_installed_apps:
+      - { id: 1543920362, name: "Displaperture" }
+      - { id: 424389933, name: "Final Cut Pro" }
+      - { id: 1538878817, name: "UTM Virtual Machines" }
+      - { id: 1295203466, name: "Windows App" }
+    mas_uninstalled_apps: []
 
   pre_tasks:
     - name: dockutil utility
@@ -77,36 +69,36 @@
         path: ~/.oh-my-zsh
       register: oh_my_zsh_installed
 
-    # - name: Check if mas is signed in
-    #   ansible.builtin.command: /opt/homebrew/bin/mas account
-    #   register: mas_account_check
-    #   changed_when: false
-    #   failed_when: false
-    #   become: false
+    - name: Check if mas is signed in
+      ansible.builtin.command: /opt/homebrew/bin/mas account
+      register: mas_account_check
+      changed_when: false
+      failed_when: false
+      become: false
 
-    # - name: Fail if mas is not signed in
-    #   ansible.builtin.fail:
-    #     msg: |
-    #       mas (Mac App Store CLI) is not signed in. Please sign in first by running:
-    #       mas signin your-apple-id@example.com
-    #       
-    #       Or if you want to sign in interactively:
-    #       mas signin
-    #   when: mas_account_check.rc != 0
-    #   become: false
+    #- name: Fail if mas is not signed in
+    #  ansible.builtin.fail:
+    #    msg: |
+    #      mas (Mac App Store CLI) is not signed in. Please sign in first by running:
+    #      mas signin your-apple-id@example.com
+    #      
+    #      Or if you want to sign in interactively:
+    #      mas signin
+    #  when: mas_account_check.rc != 0
+    #  become: false
 
-    # - name: Get current username
-    #   ansible.builtin.set_fact:
-    #     current_user: "{{ ansible_env.USER | default(ansible_user_id) }}"
+    - name: Get current username
+      ansible.builtin.set_fact:
+        current_user: "{{ ansible_env.USER | default(ansible_user_id) }}"
 
-    # - name: Configure passwordless sudo for mas
-    #   ansible.builtin.lineinfile:
-    #     path: /etc/sudoers.d/mas
-    #     line: "{{ current_user }} ALL=(ALL) NOPASSWD: /opt/homebrew/bin/mas"
-    #     create: yes
-    #     validate: 'visudo -cf %s'
-    #     mode: '0440'
-    #   become: true
+    - name: Configure passwordless sudo for mas
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/mas
+        line: "{{ current_user }} ALL=(ALL) NOPASSWD: /opt/homebrew/bin/mas"
+        create: yes
+        validate: 'visudo -cf %s'
+        mode: '0440'
+      become: true
 
   tasks:
     - name: Hush login
@@ -227,5 +219,5 @@
 
   roles:
     - name: geerlingguy.mac.homebrew
-    # - name: geerlingguy.mac.mas
+    - name: geerlingguy.mac.mas
     - name: geerlingguy.mac.dock

@@ -60,9 +60,11 @@ defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool fa
 # # # Mouse, Keyboard, Trackpad, and Input                                        #
 # # ###############################################################################
 
-# # Enable Three Finger Drag
-# defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerSwipeGesture -int 1
-# defaults write com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag" -bool "true"
+# Enable three-finger drag (Accessibility-style dragging; built-in + Magic Trackpad).
+# Same toggles as System Settings → Accessibility → Pointer Control → Trackpad Options.
+# May require logging out and back in for the trackpad to pick it up.
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
 
 # # ###############################################################################
 # # # Dock, Menu, Dashboard, and hot corners                                      #
