@@ -65,6 +65,7 @@
 
     homebrew_installed_packages:
       - mas
+      - mkcert
       - nvm
       - tilt
       - wget
