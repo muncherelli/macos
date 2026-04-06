@@ -53,21 +53,24 @@
       - name: "Cursor"
         path: "/Applications/Cursor.app"
         pos: 10
+      - name: "Sublime Text"
+        path: "/Applications/Sublime Text.app"
+        pos: 11
       - name: "GitHub Desktop"
         path: "/Applications/GitHub Desktop.app"
-        pos: 11
+        pos: 12
       - name: "Transmit"
         path: "/Applications/Transmit.app"
-        pos: 12
+        pos: 13
       - name: "Winbox"
         path: "/Applications/Winbox.app"
-        pos: 13
+        pos: 14
       - name: "Windows App"
         path: "/Applications/Windows App.app"
-        pos: 14
+        pos: 15
       - name: "Screen Sharing"
         path: "/Applications/Utilities/Screen Sharing.app"
-        pos: 15
+        pos: 16
 
     homebrew_installed_packages:
       - mas
