@@ -76,6 +76,7 @@
       - tilt
       - wget
     homebrew_cask_apps:
+      - affinity
       - brave-browser
       - chatgpt
       - cursor
