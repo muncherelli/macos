@@ -38,30 +38,36 @@
       - name: "Final Cut Pro"
         path: "/Applications/Final Cut Pro.app"
         pos: 5
+      - name: "Affinity"
+        path: "/Applications/Affinity.app"
+        pos: 6
       - name: "Mail"
         path: "/Applications/Mail.app"
-        pos: 6
+        pos: 7
       - name: "Terminal"
         path: "/Applications/Utilities/Terminal.app"
-        pos: 7
+        pos: 8
+      - name: "ChatGPT"
+        path: "/Applications/ChatGPT.app"
+        pos: 9
       - name: "Cursor"
         path: "/Applications/Cursor.app"
-        pos: 8
+        pos: 10
       - name: "GitHub Desktop"
         path: "/Applications/GitHub Desktop.app"
-        pos: 9
+        pos: 11
       - name: "Transmit"
         path: "/Applications/Transmit.app"
-        pos: 10
+        pos: 12
       - name: "Winbox"
         path: "/Applications/Winbox.app"
-        pos: 11
+        pos: 13
       - name: "Windows App"
         path: "/Applications/Windows App.app"
-        pos: 12
+        pos: 14
       - name: "Screen Sharing"
         path: "/Applications/Utilities/Screen Sharing.app"
-        pos: 13
+        pos: 15
 
     homebrew_installed_packages:
       - mas
