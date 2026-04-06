@@ -91,6 +91,7 @@
       - winbox
 
     mas_installed_apps:
+      - { id: 425264550, name: "Blackmagic Disk Speed Test" }
       - { id: 1543920362, name: "Displaperture" }
       - { id: 424389933, name: "Final Cut Pro" }
       - { id: 1538878817, name: "UTM Virtual Machines" }
