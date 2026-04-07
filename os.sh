@@ -134,6 +134,14 @@ safari_set_bool AutoFillPasswords false
 safari_set_bool AutoFillCreditCardData false
 safari_set_bool AutoFillMiscellaneousForms false
 
+# Advanced → "Show features for web developers" (Develop menu in the menu bar).
+# Safari 15+ needs both the main domain and SandboxBroker; see Apple Stack Exchange #429814.
+safari_set_bool IncludeDevelopMenu true
+defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
+
+# Advanced → Smart Search Field → "Show full website address".
+safari_set_bool ShowFullURLInSmartSearchField true
+
 unset -f safari_set_bool
 
 # reload finder
