@@ -73,6 +73,8 @@
         pos: 16
 
     homebrew_installed_packages:
+      - btop
+      - iperf3
       - mas
       - mkcert
       - nvm
