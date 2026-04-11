@@ -85,12 +85,14 @@
       - wget
     homebrew_cask_apps:
       - affinity
+      - balenaetcher
       - brave-browser
       - chatgpt
       - cursor
       - github
       - google-chrome
       - font-victor-mono
+      - obs
       - plex
       - postman
       - spotify
