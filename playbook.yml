@@ -35,42 +35,45 @@
       - name: "Messages"
         path: "/Applications/Messages.app"
         pos: 4
+      - name: "Spotify"
+        path: "/Applications/Spotify.app"
+        pos: 5
       - name: "Final Cut Pro"
         path: "/Applications/Final Cut Pro.app"
-        pos: 5
+        pos: 6
       - name: "Affinity"
         path: "/Applications/Affinity.app"
-        pos: 6
+        pos: 7
       - name: "Mail"
         path: "/Applications/Mail.app"
-        pos: 7
+        pos: 8
       - name: "Terminal"
         path: "/Applications/Utilities/Terminal.app"
-        pos: 8
+        pos: 9
       - name: "ChatGPT"
         path: "/Applications/ChatGPT.app"
-        pos: 9
+        pos: 10
       - name: "Cursor"
         path: "/Applications/Cursor.app"
-        pos: 10
+        pos: 11
       - name: "Sublime Text"
         path: "/Applications/Sublime Text.app"
-        pos: 11
+        pos: 12
       - name: "GitHub Desktop"
         path: "/Applications/GitHub Desktop.app"
-        pos: 12
+        pos: 13
       - name: "Transmit"
         path: "/Applications/Transmit.app"
-        pos: 13
+        pos: 14
       - name: "Winbox"
         path: "/Applications/Winbox.app"
-        pos: 14
+        pos: 15
       - name: "Windows App"
         path: "/Applications/Windows App.app"
-        pos: 15
+        pos: 16
       - name: "Screen Sharing"
         path: "/Applications/Utilities/Screen Sharing.app"
-        pos: 16
+        pos: 17
 
     homebrew_installed_packages:
       - btop
