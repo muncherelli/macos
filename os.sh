@@ -78,8 +78,14 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Disable automatic spelling correction and capitalization (Keyboard text settings).
+# Spelling and grammar (Edit → Spelling and Grammar): disable all three toggles for new documents / default text views.
+# - Check Spelling While Typing
+# - Check Grammar With Spelling
+# - Correct Spelling Automatically (also mirrored in System Settings → Keyboard → Text Input)
+defaults write NSGlobalDomain NSAllowContinuousSpellChecking -bool false
+defaults write NSGlobalDomain NSGrammarCheckingEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+# Keyboard text substitution: capitalization (separate from the Spelling and Grammar menu).
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
 # # ###############################################################################
