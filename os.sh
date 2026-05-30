@@ -63,6 +63,9 @@ chflags nohidden ~/Library
 # disable single click desktop to hide all windows and show desktop only in Stage Manager.
 defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
 
+# disable desktop widgets (System Settings → Desktop & Dock → Show Widgets → On Desktop).
+defaults write com.apple.WindowManager StandardHideWidgets -bool true
+
 # # ###############################################################################
 # # # Mouse, Keyboard, Trackpad, and Input                                        #
 # # ###############################################################################
@@ -158,3 +161,6 @@ killall Dock
 
 # apply menu bar clock prefs (Ventura+)
 killall ControlCenter 2>/dev/null || true
+
+# apply desktop widget prefs (Sonoma+)
+killall WindowManager 2>/dev/null || true
