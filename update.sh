@@ -41,5 +41,16 @@ fi
 # install ansible requirements
 ansible-galaxy install -r requirements.yml
 
+# Homebrew casks (e.g. Docker) invoke sudo internally via SUDO_ASKPASS; that path
+# uses ansible_become_password, not --ask-become-pass alone.
+echo -n "Sudo password: "
+read -rs ANSIBLE_BECOME_PASSWORD
+echo
+
+if ! sudo -S -v <<< "$ANSIBLE_BECOME_PASSWORD" >/dev/null 2>&1; then
+    echo "Incorrect sudo password."
+    exit 1
+fi
+
 # run ansible update playbook
-ansible-playbook playbook.yml --ask-become-pass
+ansible-playbook playbook.yml -e "ansible_become_password=${ANSIBLE_BECOME_PASSWORD}"
