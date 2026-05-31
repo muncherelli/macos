@@ -137,7 +137,7 @@
 
     - name: Get current username
       ansible.builtin.set_fact:
-        current_user: "{{ ansible_env.USER | default(ansible_user_id) }}"
+        current_user: "{{ ansible_facts['env']['USER'] | default(ansible_facts['user_id']) }}"
 
     - name: Configure passwordless sudo for mas
       ansible.builtin.lineinfile:
@@ -157,7 +157,7 @@
       args:
         creates: ~/.oh-my-zsh
       environment:
-        PATH: "{{ ansible_env.PATH }}"
+        PATH: "{{ ansible_facts['env']['PATH'] }}"
 
     - name: MesloLGS NF Regular (font)
       ansible.builtin.get_url:
@@ -182,12 +182,12 @@
     - name: Powerlevel10k theme
       ansible.builtin.git:
         repo: "https://github.com/romkatv/powerlevel10k.git"
-        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
+        dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/themes/powerlevel10k"
         depth: 1
 
     - name: Set ZSH_THEME
       ansible.builtin.lineinfile:
-        path: "{{ ansible_env.HOME }}/.zshrc"
+        path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
         regexp: "^ZSH_THEME="
         line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
         create: yes
@@ -200,7 +200,7 @@
     #   args:
     #     creates: /Applications/SoundSource.app
     #   environment:
-    #     PATH: "{{ ansible_env.PATH }}"
+    #     PATH: "{{ ansible_facts['env']['PATH'] }}"
 
     # - name: Audio Hijack
     #   ansible.builtin.shell: |
@@ -210,7 +210,7 @@
     #   args:
     #     creates: /Applications/Audio Hijack.app
     #   environment:
-    #     PATH: "{{ ansible_env.PATH }}"
+    #     PATH: "{{ ansible_facts['env']['PATH'] }}"
 
     # - name: Loopback
     #   ansible.builtin.shell: |
@@ -220,7 +220,7 @@
     #   args:
     #     creates: /Applications/Loopback.app
     #   environment:
-    #     PATH: "{{ ansible_env.PATH }}"
+    #     PATH: "{{ ansible_facts['env']['PATH'] }}"
 
     - name: Run OS Script
       ansible.builtin.shell: ./os.sh
@@ -230,12 +230,12 @@
     - name: Clone zsh-autosuggestions repository
       git:
         repo: "https://github.com/zsh-users/zsh-autosuggestions"
-        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+        dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
         update: yes
 
     - name: Ensure zsh-autosuggestions is added to plugins list in .zshrc
       lineinfile:
-        path: "{{ ansible_env.HOME }}/.zshrc"
+        path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
         regexp: '^plugins=\('
         line: "plugins=(git zsh-autosuggestions)"
         state: present
@@ -244,12 +244,12 @@
     - name: Clone zsh-syntax-highlighting repository
       git:
         repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+        dest: "{{ ansible_facts['env']['HOME'] }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
         update: yes
 
     - name: Ensure zsh-syntax-highlighting is added to plugins list in .zshrc
       lineinfile:
-        path: "{{ ansible_env.HOME }}/.zshrc"
+        path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
         regexp: '^plugins=\('
         line: "plugins=(git zsh-autosuggestions zsh-syntax-highlighting)"
         state: present
@@ -257,7 +257,7 @@
 
     - name: Ensure nvm configuration is added to .zshrc
       blockinfile:
-        path: "{{ ansible_env.HOME }}/.zshrc"
+        path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
         block: |
           export NVM_DIR="$HOME/.nvm"
           [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
