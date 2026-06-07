@@ -4,6 +4,7 @@
 
   vars:
     dockitems_remove:
+      - Affinity
       - Apps
       - "App Store"
       - Calendar
@@ -20,6 +21,7 @@
       - Phone
       - Photos
       - Reminders
+      - Spotify
       - "System Settings"
       - TV
     dockitems_persist:
@@ -130,7 +132,7 @@
     #    msg: |
     #      mas (Mac App Store CLI) is not signed in. Please sign in first by running:
     #      mas signin your-apple-id@example.com
-    #      
+    #
     #      Or if you want to sign in interactively:
     #      mas signin
     #  when: mas_account_check.rc != 0
@@ -145,8 +147,8 @@
         path: /etc/sudoers.d/mas
         line: "{{ current_user }} ALL=(ALL) NOPASSWD: /opt/homebrew/bin/mas"
         create: yes
-        validate: 'visudo -cf %s'
-        mode: '0440'
+        validate: "visudo -cf %s"
+        mode: "0440"
       become: true
 
   tasks:
