@@ -73,6 +73,7 @@
 
     homebrew_installed_packages:
       - btop
+      - deno
       - iperf3
       - mas
       - mkcert
