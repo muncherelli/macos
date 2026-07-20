@@ -92,6 +92,44 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
 # # ###############################################################################
+# # # Spotlight                                                                   #
+# # ###############################################################################
+
+# Spotlight → Search Results: Apps only.
+# On macOS Tahoe+, System Settings stores enabled categories in EnabledPreferenceRules
+# (an allowlist). Apps are always available and are not in that list — clearing it
+# disables every other result source (Files, Folders, Mail, Notes, etc.).
+defaults write com.apple.Spotlight EnabledPreferenceRules -array
+
+# Classic orderedItems API (still consumed by Spotlight settings plumbing): enable
+# APPLICATIONS only; explicitly disable every other category.
+defaults write com.apple.Spotlight orderedItems -array \
+  '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+  '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+  '{"enabled" = 0;"name" = "CONTACT";}' \
+  '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+  '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+  '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+  '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+  '{"enabled" = 0;"name" = "DIRECTORIES";}' \
+  '{"enabled" = 0;"name" = "FONTS";}' \
+  '{"enabled" = 0;"name" = "IMAGES";}' \
+  '{"enabled" = 0;"name" = "MESSAGES";}' \
+  '{"enabled" = 0;"name" = "EMAIL";}' \
+  '{"enabled" = 0;"name" = "MOVIES";}' \
+  '{"enabled" = 0;"name" = "MUSIC";}' \
+  '{"enabled" = 0;"name" = "MENU_OTHER";}' \
+  '{"enabled" = 0;"name" = "PDF";}' \
+  '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+  '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+  '{"enabled" = 0;"name" = "SYSTEM_PREFS";}' \
+  '{"enabled" = 0;"name" = "BOOKMARKS";}' \
+  '{"enabled" = 0;"name" = "SOURCE";}' \
+  '{"enabled" = 0;"name" = "TIPS";}' \
+  '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
+  '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+
+# # ###############################################################################
 # # # Dock, Menu, Dashboard, and hot corners                                      #
 # # ###############################################################################
 
@@ -164,3 +202,6 @@ killall ControlCenter 2>/dev/null || true
 
 # apply desktop widget prefs (Sonoma+)
 killall WindowManager 2>/dev/null || true
+
+# apply Spotlight search-result category prefs
+killall mds 2>/dev/null || true
