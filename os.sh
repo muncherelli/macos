@@ -4,6 +4,24 @@
 # General UI/UX                                                               #
 ###############################################################################
 
+# Appearance (macOS Tahoe 26.1+): Liquid Glass → Tinted.
+# System Settings writes NSGlassDiffusionSetting (true = Tinted, false = Clear).
+defaults write NSGlobalDomain NSGlassDiffusionSetting -bool true
+
+# Appearance (macOS Tahoe+): Icon & widget style → Dark (Always).
+# Values: RegularAutomatic, RegularLight, RegularDark, Clear*, Tinted*.
+defaults write NSGlobalDomain AppleIconAppearanceTheme -string RegularDark
+
+# Notify running UI that icon appearance changed (Dock picks this up after killall too).
+osascript -l JavaScript -e '
+ObjC.import("Foundation");
+var nc = $.NSDistributedNotificationCenter.defaultCenter;
+nc.postNotificationNameObjectUserInfoDeliverImmediately(
+  $("AppleIconAppearanceThemeChangedNotification"), null, null, true);
+nc.postNotificationNameObjectUserInfoDeliverImmediately(
+  $("AppleInterfaceThemeChangedNotification"), null, null, true);
+' >/dev/null 2>&1 || true
+
 # expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -95,14 +113,37 @@ defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 # # # Spotlight                                                                   #
 # # ###############################################################################
 
-# Spotlight → Search Results: Apps only.
-# On macOS Tahoe+, System Settings stores enabled categories in EnabledPreferenceRules
-# (an allowlist). Apps are always available and are not in that list — clearing it
-# disables every other result source (Files, Folders, Mail, Notes, etc.).
-defaults write com.apple.Spotlight EnabledPreferenceRules -array
+# Spotlight → Apps only (System Settings → Spotlight).
+# Tahoe stores disabled result sources in EnabledPreferenceRules (a denylist despite
+# the name). Items absent from the list stay on — so Apps is left out on purpose.
+# Custom.relatedContents = "Show Related Content". System.* = Results from System
+# (except Apps). Bundle IDs = Results from Apps toggles.
+defaults write com.apple.Spotlight EnabledPreferenceRules -array \
+  "Custom.relatedContents" \
+  "System.files" \
+  "System.folders" \
+  "System.iphoneApps" \
+  "System.menuItems" \
+  "com.apple.AppStore" \
+  "com.apple.iBooksX" \
+  "com.apple.calculator" \
+  "com.apple.iCal" \
+  "com.apple.AddressBook" \
+  "com.apple.Dictionary" \
+  "com.apple.mail" \
+  "com.apple.MobileSMS" \
+  "com.apple.Notes" \
+  "com.apple.mobilephone" \
+  "com.apple.Photos" \
+  "com.apple.podcasts" \
+  "com.apple.reminders" \
+  "com.apple.Safari" \
+  "com.apple.shortcuts" \
+  "com.apple.systempreferences" \
+  "com.apple.tips" \
+  "com.apple.VoiceMemos"
 
-# Classic orderedItems API (still consumed by Spotlight settings plumbing): enable
-# APPLICATIONS only; explicitly disable every other category.
+# Classic orderedItems API (legacy Spotlight plumbing): APPLICATIONS only.
 defaults write com.apple.Spotlight orderedItems -array \
   '{"enabled" = 1;"name" = "APPLICATIONS";}' \
   '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
@@ -190,6 +231,22 @@ defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
 safari_set_bool ShowFullURLInSmartSearchField true
 
 unset -f safari_set_bool
+
+# # ###############################################################################
+# # # Login Items                                                                 #
+# # ###############################################################################
+
+# Open Displaperture at login (System Settings → General → Login Items).
+# Idempotent: skip if the app is missing or already listed.
+if [[ -d "/Applications/Displaperture.app" ]]; then
+  osascript <<'EOF' 2>/dev/null || true
+tell application "System Events"
+  if not (exists login item "Displaperture") then
+    make login item at end with properties {path:"/Applications/Displaperture.app", hidden:false}
+  end if
+end tell
+EOF
+fi
 
 # reload finder
 killall Finder
