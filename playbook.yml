@@ -4,7 +4,6 @@
 
   vars:
     dockitems_remove:
-      - Affinity
       - Apps
       - "App Store"
       - Calendar
@@ -21,7 +20,6 @@
       - Phone
       - Photos
       - Reminders
-      - Spotify
       - "System Settings"
       - TV
     dockitems_persist:
@@ -31,81 +29,57 @@
       - name: "Brave Browser"
         path: "/Applications/Brave Browser.app"
         pos: 2
-      - name: "Google Chrome"
-        path: "/Applications/Google Chrome.app"
-        pos: 3
       - name: "Messages"
         path: "/Applications/Messages.app"
-        pos: 4
-      - name: "Final Cut Pro"
-        path: "/Applications/Final Cut Pro.app"
-        pos: 5
+        pos: 3
       - name: "Mail"
         path: "/Applications/Mail.app"
-        pos: 6
+        pos: 4
       - name: "Terminal"
         path: "/Applications/Utilities/Terminal.app"
-        pos: 7
+        pos: 5
       - name: "ChatGPT"
         path: "/Applications/ChatGPT.app"
-        pos: 8
+        pos: 6
       - name: "Cursor"
         path: "/Applications/Cursor.app"
-        pos: 9
+        pos: 7
       - name: "Sublime Text"
         path: "/Applications/Sublime Text.app"
-        pos: 10
+        pos: 8
       - name: "GitHub Desktop"
         path: "/Applications/GitHub Desktop.app"
-        pos: 11
+        pos: 9
       - name: "Transmit"
         path: "/Applications/Transmit.app"
-        pos: 12
-      - name: "Winbox"
-        path: "/Applications/Winbox.app"
-        pos: 13
+        pos: 10
       - name: "Windows App"
         path: "/Applications/Windows App.app"
-        pos: 14
+        pos: 11
       - name: "Screen Sharing"
         path: "/Applications/Utilities/Screen Sharing.app"
-        pos: 15
+        pos: 12
 
     homebrew_installed_packages:
       - btop
-      - deno
-      - iperf3
       - mas
-      - mkcert
-      - nvm
-      - tilt
       - wget
     homebrew_cask_apps:
-      - affinity
-      - balenaetcher
       - brave-browser
       - chatgpt
       - cursor
       - docker
       - github
-      - google-chrome
       - font-victor-mono
       - keka
-      - obs
       - plex
-      - postman
-      - raspberry-pi-imager
-      - spotify
       - sublime-text
       - transmit
       - vlc
       - winbox
 
     mas_installed_apps:
-      - { id: 425264550, name: "Blackmagic Disk Speed Test" }
       - { id: 1543920362, name: "Displaperture" }
-      - { id: 424389933, name: "Final Cut Pro" }
-      - { id: 1538878817, name: "UTM Virtual Machines" }
       - { id: 1295203466, name: "Windows App" }
     mas_uninstalled_apps: []
 
